@@ -10,3 +10,5 @@ Output: 1->1->2->3->4->4
 
 Link: 
 https://leetcode.com/problems/merge-two-sorted-lists/
+
+Time Complexity: O(n)
