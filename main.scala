@@ -20,8 +20,7 @@ def mergeTwoSortedLinkedLists(list1: ListNode, list2: ListNode): ListNode = {
 
   println("first node " + firstResultNode.x)
 
-  while (currentNodeOfList2 != null) {
-
+  do {
     val currList1Value = currentNodeOfList1.x
     println("currList1NodeVal : " + currList1Value)
 
@@ -29,9 +28,14 @@ def mergeTwoSortedLinkedLists(list1: ListNode, list2: ListNode): ListNode = {
     println("currList2NodeVal : " + currList2Value)
 
     if(currList1Value == currList2Value) {
+      resultList.next = currentNodeOfList1
+      resultList = resultList.next
+      currentNodeOfList1 = currentNodeOfList1.next
+
       resultList.next = currentNodeOfList2
       resultList = resultList.next
       currentNodeOfList2 = currentNodeOfList2.next
+
       println("inside if equals " + resultList.x)
 
     } else if(currList1Value < currList2Value ) {
@@ -46,7 +50,8 @@ def mergeTwoSortedLinkedLists(list1: ListNode, list2: ListNode): ListNode = {
       currentNodeOfList2 = currentNodeOfList2.next
       println("inside if greater than " + resultList.x)
     }
-  }
+
+  } while (currentNodeOfList2.next != null)
 
 
   firstResultNode
@@ -64,10 +69,12 @@ node3.next = null
 val node4 = new ListNode(1)
 val node5 = new ListNode(2)
 val node6 = new ListNode(4)
+val node7 = new ListNode(6)
 
 node4.next = node5
 node5.next = node6
-node6.next = null
+node6.next = node7
+node7.next = null
 
 val result = mergeTwoSortedLinkedLists(node1, node4)
 
